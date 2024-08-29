@@ -26,11 +26,8 @@ double calcular(String expressao) {
     }
   }
 
-  print(tokens);
-
   List<String> posfixa = converterParaPosfixa(tokens);
 
-  print('oi');
   return avaliarPosfixa(posfixa);
 }
 
@@ -40,7 +37,6 @@ List<String> converterParaPosfixa(List<String> tokens) {
 
   for (String token in tokens) {
     if (token.isEmpty) continue;
-    print(token);
     if (token == '+' || token == '-' || token == '*' || token == '/') {
       while (pilha.isNotEmpty && precedencia(pilha.last) >= precedencia(token)) {
         posfixa.add(pilha.removeLast());
@@ -61,8 +57,6 @@ List<String> converterParaPosfixa(List<String> tokens) {
   while (pilha.isNotEmpty) {
     posfixa.add(pilha.removeLast());
   }
-
-  print(posfixa);
 
   return posfixa;
 }
